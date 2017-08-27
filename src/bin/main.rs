@@ -88,11 +88,11 @@ fn posts(mut posts: PathBuf) -> Option<Template> {
     posts.set_extension("md");
     let path = Path::new("posts").join(&posts);
 
-    let mut buffer = String::new();
     let file = NamedFile::open(&path);
 
     match file {
         Ok(file) => {
+            let mut buffer = String::new();
             let mut reader = BufReader::new(file);
             match reader.read_to_string(&mut buffer) {
                 Ok(_) => {
